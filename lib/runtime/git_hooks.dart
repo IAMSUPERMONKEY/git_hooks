@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:git_hooks/install/create_hooks.dart';
-import 'package:git_hooks/uninstall/deleteFiles.dart';
-import 'package:git_hooks/utils/logging.dart';
-import 'package:git_hooks/utils/type.dart';
-import 'package:git_hooks/utils/utils.dart';
+import 'package:dart_git_hooks/install/create_hooks.dart';
+import 'package:dart_git_hooks/uninstall/delete_files.dart';
+import 'package:dart_git_hooks/utils/logging.dart';
+import 'package:dart_git_hooks/utils/type.dart';
+import 'package:dart_git_hooks/utils/utils.dart';
 
 /// create files or call hooks functions
 class GitHooks {
@@ -67,7 +67,7 @@ class GitHooks {
       });
     } catch (e) {
       print(e);
-      print('git_hooks crashed when call ${type},check your function');
+      print('git_hooks crashed when call $type,check your function');
     }
   }
 }

@@ -1,9 +1,10 @@
 import 'dart:io';
-import 'package:git_hooks/utils/logging.dart';
-import 'package:git_hooks/utils/utils.dart';
-import '../git_hooks.dart';
-import './hook_template.dart';
+
+import 'package:dart_git_hooks/git_hooks.dart';
+import 'package:dart_git_hooks/utils/logging.dart';
 import 'package:path/path.dart';
+
+import './hook_template.dart';
 
 typedef _HooksCommandFile = Future<bool> Function(File file);
 String _rootDir = Directory.current.path;
@@ -20,7 +21,7 @@ class CreateHooks {
         exit(1);
       }
     }
-    var relativePath = '${_rootDir}/${targetPath}';
+    var relativePath = '$_rootDir/$targetPath';
     var hookFile = File(Utils.uri(absolute(_rootDir, relativePath)));
     var logger = Logger.standard();
     try {
@@ -33,8 +34,7 @@ class CreateHooks {
         }
         await hookFile.writeAsString(commonStr);
         if (!Platform.isWindows) {
-          await Process.run('chmod', ['777', hookFile.path])
-              .catchError((onError) {
+          await Process.run('chmod', ['777', hookFile.path]).catchError((onError) {
             print(onError);
           });
         }

@@ -3,11 +3,9 @@
 import 'dart:async';
 import 'dart:io' as io;
 
-// ignore_for_file: public_member_api_docs
 class Ansi {
   static bool get terminalSupportsAnsi {
-    return io.stdout.supportsAnsiEscapes &&
-        io.stdioType(io.stdout) == io.StdioType.terminal;
+    return io.stdout.supportsAnsiEscapes && io.stdioType(io.stdout) == io.StdioType.terminal;
   }
 
   final bool useAnsi;
@@ -145,9 +143,7 @@ class StandardLogger implements Logger {
       progress.cancel();
     }
 
-    var progress = ansi.useAnsi
-        ? AnsiProgress(ansi, message)
-        : SimpleProgress(this, message);
+    var progress = ansi.useAnsi ? AnsiProgress(ansi, message) : SimpleProgress(this, message);
     _currentProgress = progress;
     return progress;
   }
@@ -180,7 +176,7 @@ class AnsiProgress extends Progress {
   late Timer _timer;
 
   AnsiProgress(this.ansi, String message) : super(message) {
-    io.stdout.write('${message}...  '.padRight(40));
+    io.stdout.write('$message...  '.padRight(40));
 
     _timer = Timer.periodic(Duration(milliseconds: 80), (t) {
       _index++;
@@ -210,16 +206,12 @@ class AnsiProgress extends Progress {
     }
   }
 
-  void _updateDisplay(
-      {bool isFinal = false,
-      bool cancelled = false,
-      String? message,
-      bool showTiming = false}) {
+  void _updateDisplay({bool isFinal = false, bool cancelled = false, String? message, bool showTiming = false}) {
     var char = kAnimationItems[_index % kAnimationItems.length];
     if (isFinal || cancelled) {
       char = '';
     }
-    io.stdout.write('${ansi.backspace}${char}');
+    io.stdout.write('${ansi.backspace}$char');
     if (isFinal || cancelled) {
       if (message != null) {
         io.stdout.write(message.isEmpty ? ' ' : message);

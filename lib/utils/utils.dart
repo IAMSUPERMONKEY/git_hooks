@@ -1,6 +1,7 @@
 import 'dart:io';
-import 'package:path/path.dart' as path;
+
 import 'package:meta/meta.dart';
+import 'package:path/path.dart' as path;
 
 /// return bool function
 typedef UserBackFun = Future<bool> Function();
@@ -20,18 +21,18 @@ class Utils {
     var a = pac.readAsStringSync();
     var b = a.split('\n');
     String? resPath;
-    b.forEach((v) {
+    for (var v in b) {
       if (v.startsWith('git_hooks:')) {
         var index = v.indexOf(':');
         var lastIndex = v.lastIndexOf('lib');
         resPath = v.substring(index + 1, lastIndex);
       }
-    });
-    resPath = path.fromUri(resPath);
-    if (path.isRelative(resPath!)) {
-      resPath = path.canonicalize(resPath!);
     }
-    if (!Directory(resPath!).existsSync()) {
+    resPath = path.fromUri(resPath);
+    if (path.isRelative(resPath)) {
+      resPath = path.canonicalize(resPath);
+    }
+    if (!Directory(resPath).existsSync()) {
       return null;
     }
     return resPath;

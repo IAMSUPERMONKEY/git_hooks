@@ -1,5 +1,6 @@
-import 'package:yaml/yaml.dart';
 import 'dart:io';
+
+import 'package:yaml/yaml.dart';
 
 /// hooks template
 String commonHook(String path) {
@@ -19,7 +20,7 @@ program_exists() {
     return 0
 }
 if program_exists dart; then
-  dart ${path} \$hookName
+  dart $path \$hookName
   if [ "\$?" -ne "0" ];then
     exit 1
   fi
@@ -81,14 +82,14 @@ String createHeader() {
   return '''
 #!/bin/sh
 # !!!don"t edit this file
-# ${name}
-# Hook created by ${author}
-#   Version: ${version}
+# $name
+# Hook created by $author
+#   Version: $version
 #   At: ${DateTime.now()}
-#   See: ${homepage}#readme
+#   See: $homepage#readme
 
 # From
-#   Homepage: ${homepage}#readme
+#   Homepage: $homepage#readme
 
 ''';
 }

@@ -1,8 +1,7 @@
 import 'dart:io';
-import 'package:git_hooks/utils/logging.dart';
-import 'package:git_hooks/utils/utils.dart';
 
-import '../git_hooks.dart';
+import 'package:dart_git_hooks/git_hooks.dart';
+import 'package:dart_git_hooks/utils/logging.dart';
 
 /// delete all file from `.git/hooks`
 Future<bool> deleteFiles() async {
@@ -30,8 +29,7 @@ Future<bool> deleteFiles() async {
   }
   progress.finish(showTiming: true);
   print('All files deleted successfully!');
-  await Process.run('pub', ['global', 'deactivate', 'git_hooks'])
-      .catchError((onError) {
+  await Process.run('pub', ['global', 'deactivate', 'git_hooks']).catchError((onError) {
     print(onError);
   });
   print('git_hooks uninstalled successful!');
