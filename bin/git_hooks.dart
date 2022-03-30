@@ -22,6 +22,8 @@ void main(List<String>? arguments) {
         } else {
           CreateHooks.copyFile();
         }
+      } else if (str == 'init') {
+        //  将脚本直接复制到 .git/hooks
       } else if (str == '-h' || str == '-help') {
         help();
       } else if (str == '-v' || str == '--version') {

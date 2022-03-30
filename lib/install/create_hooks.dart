@@ -28,7 +28,7 @@ class CreateHooks {
       var commonStr = commonHook(Utils.uri(targetPath));
       commonStr = createHeader() + commonStr;
       var progress = logger.progress('create files');
-      await _hooksCommand((hookFile) async {
+      await _hooksCommand((File hookFile) async {
         if (!hookFile.existsSync()) {
           await hookFile.create(recursive: true);
         }
@@ -58,7 +58,7 @@ class CreateHooks {
   /// returns the path that the git hooks points to.
   static Future<String?> getTargetFilePath() async {
     String? commandPath = '';
-    await _hooksCommand((hookFile) async {
+    await _hooksCommand((File hookFile) async {
       var hookTemplate = hookFile.readAsStringSync();
       var match = RegExp(r'dart\s(\S+)\s\$hookName').firstMatch(hookTemplate);
       if (match is RegExpMatch) {
