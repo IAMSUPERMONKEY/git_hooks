@@ -1,8 +1,9 @@
 import 'dart:io';
-import 'package:git_hooks/utils/logging.dart';
-import 'package:git_hooks/utils/type.dart';
+
 import 'package:git_hooks/install/create_hooks.dart';
 import 'package:git_hooks/uninstall/deleteFiles.dart';
+import 'package:git_hooks/utils/logging.dart';
+import 'package:git_hooks/utils/type.dart';
 import 'package:git_hooks/utils/utils.dart';
 
 /// create files or call hooks functions
@@ -31,8 +32,8 @@ class GitHooks {
             'You can check \'git_hooks\' in your pubspec.yaml,and use \'pub get\' or \'flutter pub get\' again'));
         exit(1);
       }
-      await CreateHooks.copyFile(targetPath: targetPath);
     }
+    await CreateHooks.copyFile(targetPath: targetPath);
   }
 
   /// unInstall git_hooks
