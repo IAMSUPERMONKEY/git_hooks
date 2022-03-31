@@ -24,6 +24,13 @@ void main(List<String>? arguments) {
         }
       } else if (str == 'init') {
         //  将脚本直接复制到 .git/hooks
+        String? targetPath;
+        try {
+          targetPath = arguments[1];
+        } on RangeError {
+          targetPath = null;
+        }
+        CreateHooks.copyHookFile(targetPath: targetPath ?? 'bin/git_hooks.dart');
       } else if (str == '-h' || str == '-help') {
         help();
       } else if (str == '-v' || str == '--version') {
