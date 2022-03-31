@@ -25,7 +25,7 @@ if program_exists dart; then
     exit 1
   fi
 else
-  echo "git_hooks > \$hookName"
+  echo "dart_git_hooks > \$hookName"
   echo "Cannot find dart in PATH"
 fi
 ''';
@@ -34,7 +34,7 @@ fi
 
 /// dart code template
 const userHooks = r'''
-import 'package:git_hooks/git_hooks.dart';
+import 'package:dart_git_hooks/git_hooks.dart';
 import 'dart:io';
 import 'dart:core';
 
@@ -65,10 +65,6 @@ Future<bool> commitMsg() async {
 Future<bool> preCommit() async {
 
   try {
-    // bool msg = await commitMsg();
-    // if(!msg) {
-    //   return false;
-    // }
     print('dart analyze 开始分析... ${DateTime.now()}');
     //--options analysis_options.yaml lib
     ProcessResult result = await Process.run('dart', ['analyze']);

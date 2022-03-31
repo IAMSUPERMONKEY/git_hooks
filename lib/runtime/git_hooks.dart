@@ -14,7 +14,7 @@ class GitHooks {
   /// [targetPath] is the absolute path
   static void init({String? targetPath}) async {
     try {
-      await Process.run('git_hooks', ['-v']);
+      await Process.run('dart_git_hooks', ['-v']);
     } catch (error) {
       var result = await Process.run('pub', [
         'global',
@@ -29,7 +29,7 @@ class GitHooks {
       if (result.stderr.length != 0) {
         print(_ansi.error(result.stderr));
         print(_ansi.subtle(
-            'You can check \'git_hooks\' in your pubspec.yaml,and use \'pub get\' or \'flutter pub get\' again'));
+            'You can check \'dart_git_hooks\' in your pubspec.yaml,and use \'pub get\' or \'flutter pub get\' again'));
         exit(1);
       }
     }
@@ -67,7 +67,7 @@ class GitHooks {
       });
     } catch (e) {
       print(e);
-      print('git_hooks crashed when call $type,check your function');
+      print('dart_git_hooks crashed when call $type,check your function');
     }
   }
 }

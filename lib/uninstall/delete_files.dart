@@ -25,13 +25,13 @@ Future<bool> deleteFiles() async {
   // var hookFile = File(Utils.uri(rootDir.path + '/git_hooks.dart'));
   // if (hookFile.existsSync()) {
   //   await hookFile.delete();
-  //   print('git_hooks.dart deleted successfully!');
+  //   print('dart_git_hooks.dart deleted successfully!');
   // }
   progress.finish(showTiming: true);
   print('All in files `.git/hooks` deleted successfully!');
-  // await Process.run('pub', ['global', 'deactivate', 'git_hooks']).catchError((onError) {
+  // await Process.run('pub', ['global', 'deactivate', 'dart_git_hooks']).catchError((onError) {
   //   print(onError);
   // });
-  print('git_hooks uninstalled successful!');
+  // print('dart_git_hooks uninstalled successful!');
   return true;
 }
