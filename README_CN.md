@@ -7,6 +7,8 @@
 
 * [English Version](./README.md)
 
+**fork by [xuzhongpeng/git_hooks](https://github.com/xuzhongpeng/git_hooks)**
+
 ## Git Hooks
 `Git Hooks`是什么，`Hooks`顾名思义，就是钩子。它在Git中的作用就是在我们通过`git`命令操作仓库或者添加项目文件时，运行一些脚本，脚本通过即可完成事件，如果失败就被终止事件。[这里](https://git-scm.com/docs/githooks.html)是官方定义的所有钩子，有兴趣的可以一一查看。比如我们在`.git/hooks/`下新建了一个`pre-commit`文件，并输入以下内容
 ```shell
@@ -24,13 +26,13 @@ git commit -m '提交信息'
 
 这样，我们就可以在这个文件中写一些校验，比如通过`dartanalyzer`查看本地项目语法是否有语法问题。
 
-## [git_hooks](https://pub.dev/packages/git_hooks)
+## [dart_git_hooks](https://pub.dev/packages/git_hooks)
 
 这是一个`Dart`命令行插件，也是一个Dart插件。我们看到上面使用`shell`脚本来写校验，它存在一些问题：
 - 每个人的`.git`文件夹是不通过版本管理的，所以一个人第一次拉了代码，在`.git/hooks`文件夹下是不会存在能运行的hooks文件的
 - shell脚本比较生涩难写，上手难度高
 
-`git_hooks`库就是为了解决上面问题。它的作用就是能通过命令生成所有`hooks`，然后在我们通过`git`命令提交代码时，可以通过dart来进行提交前或者提交信息的校验。它让我们程序员可以忽略hooks文件存在，在dart代码中实现对所有钩子的操作。
+`dart_git_hooks`库就是为了解决上面问题。它的作用就是能通过命令生成所有`hooks`，然后在我们通过`git`命令提交代码时，可以通过dart来进行提交前或者提交信息的校验。它让我们程序员可以忽略hooks文件存在，在dart代码中实现对所有钩子的操作。
 
 这里我们定一个我们能看懂的术语
 > `hooks文件`：指在`.git/hooks`文件夹下生成的钩子文件
@@ -41,7 +43,7 @@ git commit -m '提交信息'
 
 运行命令`dart --version`查看dart版本号
 
-然后运行`pub global activate git_hooks`即可全局安装`git_hooks`命令
+然后运行`pub global activate dart_git_hooks`即可全局安装`dart_git_hooks`命令
 
 ## 创建hooks项目文件
 
@@ -50,18 +52,18 @@ git commit -m '提交信息'
 在项目中的`pubspec.yaml`文件中添加
 ```yaml
 dev_dependencies:
-  git_hooks: ^0.1.5
+  dart_git_hooks: last
 ```
 
 创建`hooks文件`和`dart钩子文件`的命令是：
 ```shell
-git_hooks create {{targetFileName}}
+dart_git_hooks create {{targetFileName}}
 ```
 - targetFileName指的是`dart钩子文件`，它可以是项目中任何位置，比如在根目录下的`git_hooks.dart`文件（这也是如果此参数不传默认会创建的文件）
 
 那我们来执行：
 ```shell
-git_hooks create git_hooks.dart
+dart_git_hooks create bin/git_hooks.dart
 ```
 如果输出
 ```
@@ -72,40 +74,7 @@ All files wrote successful!
 那说明我们已经创建成功。我们来检查一下文件是否生成成功，查看`.git/hooks`文件下是否有多个文件例如`pre-commit`,`pre-push`等等，查看根目录下是否已生成`git_hooks.dart`文件
 
 打开`git_hooks.dart`文件会看到如下
-```dart
-import 'package:git_hooks/git_hooks.dart';
-// import 'dart:io';
 
-void main(List arguments) {
-  // ignore: omit_local_variable_types
-  Map<Git, UserBackFun> params = {
-    Git.commitMsg: commitMsg,
-    Git.preCommit: preCommit
-  };
-  GitHooks.call(arguments, params);
-}
-
-Future<bool> commitMsg() async {
-  // String rootDir = Directory.current.path;
-  // String commitMsg = Utils.getCommitEditMsg();
-  // if (commitMsg.startsWith('fix:')) {
-  //   return true; // you can return true let commit go
-  // } else
-  //   return false;
-  return true;
-}
-
-Future<bool> preCommit() async {
-  // try {
-  //   ProcessResult result = await Process.run('dartanalyzer', ['bin']);
-  //   print(result.stdout);
-  //   if (result.exitCode != 0) return false;
-  // } catch (e) {
-  //   return false;
-  // }
-  return true;
-}
-```
 解释：
 - main方法下的params是一个Map，是我们想要自定义的钩子集合，每个钩子对应下面具体的函数
 - GitHooks.call 是固定写法，库的内部会执行钩子函数并校验
@@ -125,7 +94,7 @@ Future<bool> commitMsg() async {
 ```
 然后在项目路径的命令行下执行:
 ```shell
-git add git_hooks.dart
+git add bin/git_hooks.dart
 git commit -m '提交信息'
 ```
 脚本输出如下
@@ -139,7 +108,7 @@ you should add `fix` in the commit message
 ## 删除所有`hooks文件`
 当我们有一天被自己写的钩子折磨，不想再用此校验，我们有两个方式来删除钩子
 1. 删除`.git/hooks`文件夹，注意是hooks文件夹而不是`.git`文件夹
-2. 通过命令`git_hooks uninstall`来删除
+2. 通过命令`dart_git_hooks uninstall`来删除
 
 ## 其它钩子的枚举
 你可以通过下面的枚举，添加更多的钩子操作
@@ -192,10 +161,10 @@ enum Git {
   "configurations": [
     {
       "name": "debugger git hooks",
-      "program": "git_hooks.dart",//your targetFile
+      "program": "git_hooks.dart",
       "request": "launch",
       "type": "dart",
-      "args": ["pre-commit"] // hooks argument
+      "args": ["pre-commit"]
     }
   ]
 }

@@ -7,6 +7,7 @@
 
 * [简体中文](./README_CN.md)
 
+**fork by [xuzhongpeng/git_hooks](https://github.com/xuzhongpeng/git_hooks)**
 
 git_hooks can prevent bad `git commit`,`git push` and more easy in dart and flutter! It is similar to husky.
 
@@ -14,7 +15,7 @@ git_hooks can prevent bad `git commit`,`git push` and more easy in dart and flut
 
 ```
 dev_dependencies:
-  git_hooks: ^0.1.0
+  dart_git_hooks: 
 ```
 
 then
@@ -32,16 +33,16 @@ flutter pub get
 ## create files in .git/hooks
 Here has two ways
 
-1. Using `git_hooks` command
+1. Using `dart_git_hooks` command
 
-activate `git_hooks` in shell
+activate `dart_git_hooks` in shell
 
 ```
-pub global activate git_hooks
+pub global activate dart_git_hooks
 ```
 Now,we can let the `git hooks` bring into effect
 ```
-git_hooks create bin/git_hooks.dart
+dart_git_hooks create bin/git_hooks.dart
 ```
 
 2. Using dart code:
@@ -77,41 +78,7 @@ void main() async{
 `Git hook command file`: The Git hooks file. Such as `/.git/hooks/commit-msg`.
 ## Using
 
-You can change `git_hooks.dart`
-
-```dart
-import "package:git_hooks/git_hooks.dart";
-import "dart:io";
-
-void main(List arguments) {
-  Map<Git, UserBackFun> params = {
-    Git.commitMsg: commitMsg,
-    Git.preCommit: preCommit
-  };
-  GitHooks.call(arguments, params);
-}
-
-Future<bool> commitMsg() async {
-  String rootDir = Directory.current.path;
-  String commitMsg = Utils.getCommitEditMsg();
-  if (commitMsg.startsWith('fix:')) {
-    return true; // you can return true let commit go
-  } else
-    return false;
-}
-
-Future<bool> preCommit() async {
-  try {
-    ProcessResult result = await Process.run('dartanalyzer', ['bin']);
-    print(result.stdout);
-    if (result.exitCode != 0) return false;
-  } catch (e) {
-    return false;
-  }
-  return true;
-}
-
-```
+You can change `bin/git_hooks.dart`
 
 If you want interrupt your commit or push,you can return false.Then you can return true if only nothing to do.
 
@@ -183,10 +150,10 @@ or add Configuration in VSCode
   "configurations": [
     {
       "name": "debugger git hooks",
-      "program": "git_hooks.dart",//your targetFile
+      "program": "git_hooks.dart",
       "request": "launch",
       "type": "dart",
-      "args": ["pre-commit"] // hooks argument
+      "args": ["pre-commit"]
     }
   ]
 }
