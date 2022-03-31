@@ -1,3 +1,7 @@
+## 0.2.4
+
+- fix: update common main point
+
 ## 0.2.3
 
 - update executables name to dart_git_hook
