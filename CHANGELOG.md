@@ -1,3 +1,7 @@
+## 0.2.3
+
+- update executables name to dart_git_hook
+
 ## 0.2.2
 
 - update common line name to dart_git_hook
