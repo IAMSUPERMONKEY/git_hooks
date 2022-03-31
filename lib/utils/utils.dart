@@ -22,7 +22,7 @@ class Utils {
     var b = a.split('\n');
     String? resPath;
     for (var v in b) {
-      if (v.startsWith('git_hooks:')) {
+      if (v.startsWith('dart_git_hooks:')) {
         var index = v.indexOf(':');
         var lastIndex = v.lastIndexOf('lib');
         resPath = v.substring(index + 1, lastIndex);

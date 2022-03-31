@@ -42,7 +42,7 @@ void main(List<String>? arguments) {
       } else if (str == 'uninstall') {
         GitHooks.unInstall();
       } else {
-        print('$str is not a git_hooks command,see follow');
+        print('$str is not a dart_git_hooks command,see follow');
         print('');
         help();
       }
