@@ -34,7 +34,7 @@ fi
 
 /// dart code template
 const userHooks = r'''
-import 'package:dart_git_hooks/git_hooks.dart';
+import 'package:dart_git_hooks/dart_git_hooks.dart';
 import 'dart:io';
 import 'dart:core';
 

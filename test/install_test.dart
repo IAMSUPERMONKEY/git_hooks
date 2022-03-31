@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dart_git_hooks/git_hooks.dart';
+import 'package:dart_git_hooks/dart_git_hooks.dart';
 import 'package:dart_git_hooks/install/create_hooks.dart';
 import 'package:test/test.dart';
 

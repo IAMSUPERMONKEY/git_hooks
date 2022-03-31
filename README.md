@@ -50,7 +50,7 @@ dart_git_hooks create bin/git_hooks.dart
 create `main.dart` file in `/bin/`
 ```dart
 void main() async{
-  GitHooks.init(targetPath: "bin/git_hooks.dart");
+  GitHooks.init(targetPath: "bin/dart_git_hooks.dart");
 }
 ```
 then `dart bin/main.dart` in shell.
@@ -150,7 +150,7 @@ or add Configuration in VSCode
   "configurations": [
     {
       "name": "debugger git hooks",
-      "program": "git_hooks.dart",
+      "program": "dart_git_hooks.dart",
       "request": "launch",
       "type": "dart",
       "args": ["pre-commit"]

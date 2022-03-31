@@ -61,7 +61,7 @@ void main(List<String>? arguments) {
 void help() {
   print('Common commands:');
   print('');
-  print(' git_hooks create {{targetPath}}');
+  print(' dart_git_hooks create {{targetPath}}');
   print('   Create hooks files in \'.git/hooks\'');
   print('');
 }

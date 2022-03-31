@@ -63,7 +63,7 @@ dart_git_hooks create {{targetFileName}}
 
 那我们来执行：
 ```shell
-dart_git_hooks create bin/git_hooks.dart
+dart_git_hooks create bin/dart_git_hooks.dart
 ```
 如果输出
 ```
@@ -94,7 +94,7 @@ Future<bool> commitMsg() async {
 ```
 然后在项目路径的命令行下执行:
 ```shell
-git add bin/git_hooks.dart
+git add bin/dart_git_hooks.dart
 git commit -m '提交信息'
 ```
 脚本输出如下
@@ -161,7 +161,7 @@ enum Git {
   "configurations": [
     {
       "name": "debugger git hooks",
-      "program": "git_hooks.dart",
+      "program": "dart_git_hooks.dart",
       "request": "launch",
       "type": "dart",
       "args": ["pre-commit"]
