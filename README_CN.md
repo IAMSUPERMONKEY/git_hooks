@@ -1,9 +1,9 @@
-# git_hooks
+# dart_git_hooks
 
-![https://img.shields.io/github/license/xuzhongpeng/git_hooks](https://img.shields.io/github/license/xuzhongpeng/git_hooks)
-[![Pub](https://img.shields.io/pub/v/git_hooks)](https://pub.dev/packages/git_hooks)
-[![Star](https://img.shields.io/github/stars/xuzhongpeng/git_hooks)](https://github.com/xuzhongpeng/git_hooks)
-[![travis](https://api.travis-ci.com/xuzhongpeng/git_hooks.svg?branch=master&status=created)](https://travis-ci.com/github/xuzhongpeng/git_hooks/builds/)
+![https://img.shields.io/github/license/xuzhongpeng/git_hooks](https://img.shields.io/github/license/IAMSUPERMONKEY/git_hooks)
+[![Pub](https://img.shields.io/pub/v/dart_git_hooks)](https://pub.dev/packages/dart_git_hooks)
+[![Star](https://img.shields.io/github/stars/IAMSUPERMONKEY/git_hooks)](https://github.com/IAMSUPERMONKEY/git_hooks)
+[![travis](https://api.travis-ci.com/xuzhongpeng/git_hooks.svg?branch=master&status=created)](https://travis-ci.com/github/IAMSUPERMONKEY/git_hooks/builds/)
 
 * [English Version](./README.md)
 
