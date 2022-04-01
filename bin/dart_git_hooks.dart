@@ -60,8 +60,9 @@ void main(List<String>? arguments) {
 
 void help() {
   print('Common commands:');
-  print('');
-  print(' dart_git_hooks create {{targetPath}}');
-  print('   Create hooks files in \'.git/hooks\'');
-  print('');
+  print('create \t 创建 bin/git_hook.dart，并根据 git_hook.dart 文件，创建对应 hook 可执行脚本');
+  print('\t dart_git_hooks create {{targetPath}}');
+  print('init \t 根据已有的 bin/git_hook.dart，创建对应 hook 可执行脚本');
+  print('uninstall \t 根据已有的 .git/hooks 脚本');
+  print('-h \t get help.');
 }

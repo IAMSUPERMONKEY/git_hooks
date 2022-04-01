@@ -59,7 +59,6 @@ Future<bool> commitMsg() async {
     print('commit message 格式： `fix:`, `feat:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`, \n 参考地址：https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html');
     return false;
   }
-  return true;
 }
 
 Future<bool> preCommit() async {

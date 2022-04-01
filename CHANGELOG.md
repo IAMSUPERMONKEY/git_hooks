@@ -1,5 +1,9 @@
 ## 0.2.4
 
+- fix: fix common help
+
+## 0.2.4
+
 - fix: update common main point
 
 ## 0.2.3
