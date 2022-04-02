@@ -14,7 +14,7 @@ String _rootDir = Directory.current.path;
 class CreateCommand extends Command<void> {
   /// 创建
   CreateCommand() {
-    argParser.addOption('a');
+    // argParser.addOption('a');
   }
 
   @override

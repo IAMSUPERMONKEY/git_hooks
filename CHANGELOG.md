@@ -1,6 +1,6 @@
-## 0.2.4
+## 0.2.4+3
 
-- fix: fix common help
+- fix: refractory command use `args`
 
 ## 0.2.4
 

@@ -8,16 +8,18 @@ import 'package:dart_git_hooks/src/utils/utils.dart';
 
 import 'command/init_command.dart';
 import 'command/remove_command.dart';
+import 'command/version_command.dart';
 
 /// dart 运行命令 入口
 class MainCommand extends CommandRunner<void> {
   /// 初始化
   MainCommand() : super('dart_git_hooks', 'A command line for create git hooks') {
-    argParser.addFlag('-version', abbr: '-v');
+    // argParser.addFlag('-version', abbr: 'v');
     // 增加其他子命令
     addCommand(CreateCommand());
     addCommand(InitCommand());
     addCommand(RemoveCommand());
+    addCommand(VersionCommand());
   }
 }
 
