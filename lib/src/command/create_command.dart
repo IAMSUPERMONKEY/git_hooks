@@ -27,8 +27,8 @@ class CreateCommand extends Command<void> {
   Future<void> run() async {
     String? targetPath;
     try {
-      targetPath = argResults?['create'];
-      print('获取 create 的参数 $targetPath');
+      targetPath = (argResults?.arguments.isNotEmpty ?? false) ? argResults?.arguments.first : null;
+      print('create for $targetPath');
     } on RangeError {
       targetPath = null;
     }

@@ -1,3 +1,7 @@
+## 0.2.4+4
+
+- fix: init error
+
 ## 0.2.4+3
 
 - fix: refractory command use `args`

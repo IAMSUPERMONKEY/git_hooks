@@ -20,8 +20,7 @@ class InitCommand extends Command {
   Future<void> run() async {
     String? targetPath;
     try {
-      targetPath = argResults?['init'];
-      print('获取 init 的参数 $targetPath');
+      targetPath = (argResults?.arguments.isNotEmpty ?? false) ? argResults?.arguments.first : null;
     } on RangeError {
       targetPath = null;
     }
