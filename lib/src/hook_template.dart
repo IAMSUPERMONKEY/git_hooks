@@ -74,7 +74,7 @@ Future<bool> preCommit() async {
     ProcessResult result = await Process.run('dart', ['analyze']);
     print('dart analyze 分析中... ${result.stdout}');
     print("dart analyze 分析完成 - ${DateTime.now()} \t 返回码：${result.exitCode}");
-    print('dart analyze err: ${result.stderr}');
+    // print('dart analyze err: ${result.stderr}');
     if ('${result.stderr}'.isNotEmpty) return false;
   } catch (e) {
     print('错误：$e');

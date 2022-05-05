@@ -1,3 +1,7 @@
+## 0.2.5
+
+- fix: preCommit can't handle exitCode
+
 ## 0.2.4+4
 
 - fix: init error
