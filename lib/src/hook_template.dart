@@ -37,13 +37,13 @@ const userHooks = r'''
 import 'dart:core';
 import 'dart:io';
 
-import 'package:git_hooks/git_hooks.dart';
+import 'package:dart_git_hooks/dart_git_hooks.dart';
 
 void main(List<String> arguments) {
   // ignore: omit_local_variable_types
   Map<Git, UserBackFun> params = {Git.commitMsg: commitMsg, Git.preCommit: preCommit};
   //Git.commitMsg: commitMsg,
-  GitHooks.call(arguments, params);
+  GitHooks.hookCall(arguments, params);
 }
 
 Future<bool> commitMsg() async {

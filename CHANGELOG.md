@@ -1,3 +1,7 @@
+## 0.2.6
+
+- fix: revert GitHooks.hookCall()
+
 ## 0.2.5
 
 - fix: preCommit can't handle exitCode
