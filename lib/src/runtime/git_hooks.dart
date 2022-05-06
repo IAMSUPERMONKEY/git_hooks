@@ -9,10 +9,11 @@ class GitHooks {
   ///   Git.commitMsg: commitMsg,
   ///   Git.preCommit: preCommit
   /// };
-  /// GitHooks.call(arguments, params);
+  /// GitHooks.hookCall(arguments, params);
   /// ```
   /// [argument] is just passthrough from main methods. It may ['pre-commit','commit-msg'] from [hookList]
-  void hookCall(List<String> argument, Map<Git, UserBackFun> params) async {
+  static Future<void> hookCall(
+      List<String> argument, Map<Git, UserBackFun> params) async {
     var type = argument[0];
     try {
       params.forEach((userType, function) async {

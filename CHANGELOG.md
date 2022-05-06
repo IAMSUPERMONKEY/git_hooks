@@ -1,3 +1,7 @@
+## 0.2.6+1
+
+- fix: change to static function
+
 ## 0.2.6
 
 - fix: revert GitHooks.hookCall()
